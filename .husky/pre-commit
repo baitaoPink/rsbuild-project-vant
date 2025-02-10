@@ -1,4 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-node ./check-commit-size.js
+node ./check-commit-size.jsnpx lint-staged

@@ -6,11 +6,9 @@
     "dev": "rsbuild dev --open",
     "build": "rsbuild build",
     "preview": "rsbuild preview",
-    "lint": "eslint . --fix"
+    "lint": "eslint . --fix",
+    "prepare": "husky install"
   },
-  "pre-commit": [
-    "lint"
-  ],
   "dependencies": {
     "vant": "^4.9.16",
     "vue": "^3.5.13",
@@ -40,5 +38,23 @@
     "typescript-eslint": "^8.23.0",
     "unplugin-auto-import": "^19.0.0",
     "unplugin-vue-components": "^28.0.0"
+  },
+  "lint-staged": {
+    "*.{js,ts,vue}": [
+      "npm audit --fix",
+      "npm install --frozen-lockfile",
+      "prettier --write",
+      "git add"
+    ],
+    "*.js": "eslint --fix",
+    "*.ts": "eslint --fix",
+    "*.vue": "eslint --fix",
+    "*.json": "prettier --write",
+    "*.css": "prettier --write"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
