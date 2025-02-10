@@ -22,6 +22,18 @@ const getChangedLines = () => {
   return totalLines;
 };
 
+// 运行 ESLint 检查
+const lintFiles = (files) => {
+  let eslintOutput = '';
+  try {
+    eslintOutput = execSync(`eslint --ext .js,.ts,.vue ${files.join(' ')}`).toString();
+  } catch (error) {
+    // 捕获 ESLint 错误输出
+    eslintOutput = error.stdout.toString();
+  }
+  return eslintOutput;
+};
+
 // 提交的文件和行数限制
 const maxFiles = 10;
 const maxLines = 500;
@@ -29,7 +41,7 @@ const maxLines = 500;
 const changedFiles = getChangedFiles();
 const changedLines = getChangedLines();
 
-// 检查是否超过限制
+// 检查是否超过文件和行数限制
 if (changedFiles.length > maxFiles) {
   console.error(`Error: You have modified more than ${maxFiles} files.`);
   process.exit(1); // 阻止提交
@@ -37,6 +49,15 @@ if (changedFiles.length > maxFiles) {
 
 if (changedLines > maxLines) {
   console.error(`Error: You have modified more than ${maxLines} lines.`);
+  process.exit(1); // 阻止提交
+}
+
+// 检查 ESLint 是否通过
+const eslintOutput = lintFiles(changedFiles);
+
+if (eslintOutput) {
+  console.error("ESLint check failed:\n");
+  console.error(eslintOutput);
   process.exit(1); // 阻止提交
 }
 
