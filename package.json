@@ -46,17 +46,8 @@
     }
   },
   "lint-staged": {
-    "*.ts": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.js": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.vue": [
-      "eslint --fix",
-      "prettier --write"
+    "*.{js,vue}": [
+      "eslint --max-warnings 0"
     ]
   }
 }
