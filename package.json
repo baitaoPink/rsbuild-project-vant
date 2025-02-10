@@ -5,8 +5,14 @@
   "scripts": {
     "dev": "rsbuild dev --open",
     "build": "rsbuild build",
-    "preview": "rsbuild preview"
+    "preview": "rsbuild preview",
+    "lint": "eslint . --fix"
   },
+  "pre-commit": [
+    "lint",
+    "lint-staged",
+    "node ./check-commit-size.js"
+  ],
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged && node ./check-commit-size.js"
@@ -43,6 +49,7 @@
     "globals": "^15.14.0",
     "husky": "^9.1.7",
     "lint-staged": "^15.4.3",
+    "pre-commit": "^1.2.2",
     "prettier": "^3.5.0",
     "tailwindcss": "^4.0.5",
     "typescript": "^5.7.3",
