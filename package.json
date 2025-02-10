@@ -7,6 +7,11 @@
     "build": "rsbuild build",
     "preview": "rsbuild preview"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && node ./check-commit-size.js"
+    }
+  },
   "lint-staged": {
     "*.{js,ts,vue}": [
       "npm audit --fix",
@@ -19,11 +24,6 @@
     "*.vue": "eslint --fix",
     "*.json": "prettier --write",
     "*.css": "prettier --write"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "dependencies": {
     "vant": "^4.9.16",
