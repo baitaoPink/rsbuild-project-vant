@@ -46,7 +46,17 @@
     }
   },
   "lint-staged": {
-    "*.{js,ts,vue}": [
+    "*.ts": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ],
+    "*.js": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ],
+    "*.vue": [
       "eslint --fix",
       "prettier --write",
       "git add"
