@@ -47,8 +47,8 @@
   },
   "lint-staged": {
     "*.{js,ts,vue}": [
-      "npm run lint:fix",
-      "npm run format",
+      "eslint --fix",
+      "prettier --write",
       "git add"
     ]
   }
