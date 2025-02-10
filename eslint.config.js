@@ -30,7 +30,11 @@ export default [
       "no-multiple-empty-lines": ["error", { max: 1 }], // 禁止多个空行
       "prettier/prettier": "error", // 强制遵循 Prettier 规则
       quotes: ["error", "single"], // 强制使用单引号
-      "no-unused-vars": "warn", // 警告未使用的变量
+      "no-unused-vars": "error", // 将未使用的变量视为错误
+      "no-console": "error", // 禁止使用 console
+      "eqeqeq": "error", // 强制使用 === 而不是 ==
+      "curly": "error", // 强制使用大括号包裹代码块
+      "consistent-return": "error", // 强制函数返回一致性
     },
     overrides: [
       {
@@ -41,6 +45,8 @@ export default [
         rules: {
           "no-trailing-spaces": "error", // Vue 文件中的行尾空格检查
           "no-multiple-empty-lines": ["error", { max: 1 }], // Vue 文件中的空行检查
+          "vue/max-attributes-per-line": ["error", { "singleline": 3 }], // 单行最多允许3个属性
+          "vue/singleline-html-element-content-newline": ["error", { "normals": "always", "voids": "always" }], // 强制在单行 HTML 元素的内容前后换行
         },
       },
     ],
