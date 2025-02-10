@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "lib": ["DOM", "ES2020"],
+    "jsx": "preserve",
+    "target": "ES2020",
+    "noEmit": true,
+    "skipLibCheck": true,
+    "jsxImportSource": "vue",
+    "useDefineForClassFields": true,
+
+    /* modules */
+    "module": "ESNext",
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "Bundler",
+    "allowImportingTsExtensions": true,
+
+    /* type checking */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+
+    // "target": "es6", // Or a more recent version like "es2020"
+    // "module": "esnext", // Or "commonjs" if you're using Node.js
+    // "moduleResolution": "node",
+    "allowJs": true,
+    "esModuleInterop": true,
+    // "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "module": "ESNext",        // 使用 ES 模块解析
+  "target": "ESNext",        // 设置目标语言为 ESNext
+  "moduleResolution": "Node", // 确保模块解析方式正确
+  "esModuleInterop": true,   // 允许默认导入
+  "skipLibCheck": true,      // 跳过库文件检查
+  "strict": true,             // 启用严格模式
+"include": [
+    "src/**/*.ts",
+    "src/**/*.tsx"
+  ]
+}

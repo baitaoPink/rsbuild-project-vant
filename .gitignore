@@ -1,0 +1,17 @@
+# Local
+.DS_Store
+*.local
+*.log*
+
+# 在 `.gitignore` 文件中加入
+yarn.lock
+pnpm-lock.yaml
+
+# Dist
+node_modules
+dist/
+
+# IDE
+.vscode/*
+!.vscode/extensions.json
+.idea

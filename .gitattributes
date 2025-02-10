@@ -1,0 +1,11 @@
+# 强制使用 LF 作为行尾序列
+* text eol=lf
+
+# 强制使用 UTF-8 编码（Git 自动处理文件编码问题）
+*.js text eol=lf
+*.ts text eol=lf
+*.vue text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.json text eol=lf
+*.md text eol=lf
