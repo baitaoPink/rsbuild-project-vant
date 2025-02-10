@@ -22,23 +22,16 @@ const getChangedLines = () => {
   return totalLines;
 };
 
-// 运行 ESLint 检查并捕获错误
+// 运行 ESLint 检查
 const lintFiles = (files) => {
+  let eslintOutput = '';
   try {
-    // 不再使用 --ext 参数，而是依赖配置文件
-    execSync(`eslint ${files.join(' ')}`, { stdio: 'inherit' });
-    return true;  // ESLint 检查通过
+    eslintOutput = execSync(`eslint --ext .js,.ts,.vue ${files.join(' ')}`).toString();
   } catch (error) {
-    // 捕获 ESLint 错误并显示详细信息
-    console.error("ESLint check failed:\n");
-    if (error.stdout) {
-      console.error(error.stdout.toString());
-    }
-    if (error.stderr) {
-      console.error(error.stderr.toString());
-    }
-    return false;  // ESLint 检查失败
+    // 捕获 ESLint 错误输出
+    eslintOutput = error.stdout.toString();
   }
+  return eslintOutput;
 };
 
 // 提交的文件和行数限制
@@ -60,8 +53,11 @@ if (changedLines > maxLines) {
 }
 
 // 检查 ESLint 是否通过
-const eslintPassed = lintFiles(changedFiles);
-if (!eslintPassed) {
+const eslintOutput = lintFiles(changedFiles);
+
+if (eslintOutput) {
+  console.error("ESLint check failed:\n");
+  console.error(eslintOutput);
   process.exit(1); // 阻止提交
 }
 
