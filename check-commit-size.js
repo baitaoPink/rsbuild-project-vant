@@ -22,12 +22,14 @@ const getChangedLines = () => {
   return totalLines;
 };
 
-// 检查是否符合限制
+// 提交的文件和行数限制
 const maxFiles = 10;
 const maxLines = 500;
+
 const changedFiles = getChangedFiles();
 const changedLines = getChangedLines();
 
+// 检查是否超过限制
 if (changedFiles.length > maxFiles) {
   console.error(`Error: You have modified more than ${maxFiles} files.`);
   process.exit(1); // 阻止提交

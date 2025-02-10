@@ -1,4 +1,7 @@
 #!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
 
+# 运行自定义的 check-commit-size.js 来检查提交的文件数和行数
+node ./check-commit-size.js
+
+# 运行 lint-staged 来格式化和检查文件
 npx lint-staged

@@ -18,10 +18,9 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.20.0",
-    "@rsbuild/core": "^1.2.3",
+    "@rsbuild/core": "^1.2.5",
     "@rsbuild/plugin-vue": "^1.0.5",
     "@tailwindcss/postcss": "^4.0.5",
-    "@types/vue-i18n": "^7.0.0",
     "@typescript-eslint/eslint-plugin": "^8.23.0",
     "@typescript-eslint/parser": "^8.23.0",
     "@vant/auto-import-resolver": "^1.2.1",
@@ -46,8 +45,9 @@
     }
   },
   "lint-staged": {
-    "*.{js,vue}": [
-      "eslint --max-warnings 0"
+    "*.{vue, js}": [
+      "eslint --fix --quiet",
+      "git add"
     ]
   }
 }
