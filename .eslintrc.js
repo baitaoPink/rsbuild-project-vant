@@ -19,6 +19,7 @@ export default [
 			"eslint:recommended",
 			"plugin:vue/vue3-recommended",
 			"plugin:prettier/recommended", // 启用 Prettier 推荐配置
+			"plugin:@typescript-eslint/recommended",
 		],
 		rules: {
 			semi: "error",
@@ -26,19 +27,9 @@ export default [
 			"no-trailing-spaces": "error",
 			"no-multiple-empty-lines": ["error", { "max": 1 }],
 			"prettier/prettier": "error", // 强制 Prettier 规则
-			"prettier/prettier": [
-				"error",
-				{
-					"semi": true,
-					"trailingComma": "es5",
-					"singleQuote": true,
-					"tabWidth": 2,
-					"printWidth": 80,
-					"endOfLine": "lf",
-					"no-multiple-empty-lines": [1, { "max": 1 }],
-					"no-trailing-spaces": true,
-				}
-			]
+			"semi": "error", // 强制使用分号
+			"quotes": ["error", "single"], // 强制使用单引号
+			"no-unused-vars": "warn", // 警告未使用的变量
 		},
 		overrides: [
 			{

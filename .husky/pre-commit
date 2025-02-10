@@ -1,4 +1,5 @@
 #!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
+. "$(dirname "$0")/_/husky.sh"  # 正确引用 husky.sh 脚本
 
-node ./check-commit-size.jsnpx lint-staged
+# 运行 check-commit-size.js
+node ./check-commit-size.js
