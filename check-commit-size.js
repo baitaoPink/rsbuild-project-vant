@@ -55,11 +55,20 @@ if (changedLines > maxLines) {
 // 检查 ESLint 是否通过
 const eslintOutput = lintFiles(changedFiles);
 
+// 检查 ESLint 输出中的错误和警告
 if (eslintOutput) {
-  console.error("ESLint check failed:\n");
+  const warnings = eslintOutput.split("\n").filter(line => line.includes('warning'));
+
+  if (warnings.length > 0) {
+    console.error("ESLint check failed due to warnings:\n");
+    console.error(warnings.join("\n"));
+    console.error("\nYou cannot commit due to the warnings.");
+    process.exit(1); // 阻止提交
+  }
+
+  console.error("ESLint check failed due to errors:\n");
   console.error(eslintOutput);
   process.exit(1); // 阻止提交
-
 }
 
 console.log(`Commit passed: ${changedFiles.length} files and ${changedLines} lines modified.`);
