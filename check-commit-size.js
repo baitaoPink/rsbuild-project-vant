@@ -24,8 +24,12 @@ const getChangedLines = () => {
 
 // 获取 ESLint 错误和警告
 const getESLintErrors = () => {
-  const result = execSync("npx eslint --max-warnings=0").toString();
-  return result;
+  try {
+    const result = execSync("npx eslint --max-warnings=0").toString();
+    return result;
+  } catch (error) {
+    return error.stdout.toString(); // 返回 ESLint 错误或警告输出
+  }
 };
 
 // 检查是否符合限制
