@@ -6,7 +6,7 @@
     "dev": "rsbuild dev --open",
     "build": "rsbuild build",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src",
-    "lint:fix": "eslint ./src --fix",
+    "lint:fix": "eslint './src/**/*.{js,ts,vue}' --fix",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -47,7 +47,7 @@
     }
   },
   "lint-staged": {
-    "*.{ts,tsx}": [
+    "*.{ts,tsx,vue}": [
       "npm run lint:fix",
       "git add"
     ],
