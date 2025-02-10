@@ -59,6 +59,7 @@ if (eslintOutput) {
   console.error("ESLint check failed:\n");
   console.error(eslintOutput);
   process.exit(1); // 阻止提交
+
 }
 
 console.log(`Commit passed: ${changedFiles.length} files and ${changedLines} lines modified.`);
