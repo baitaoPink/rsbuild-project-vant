@@ -13,7 +13,12 @@
       "npm install --frozen-lockfile",
       "prettier --write",
       "git add"
-    ]
+    ],
+    "*.js": "eslint --fix",
+    "*.ts": "eslint --fix",
+    "*.vue": "eslint --fix",
+    "*.json": "prettier --write",
+    "*.css": "prettier --write"
   },
   "husky": {
     "hooks": {
